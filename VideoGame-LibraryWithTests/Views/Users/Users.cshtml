@@ -1,0 +1,15 @@
+﻿@model VideoGames.ViewModels.UsersViewModel
+
+<table>
+    @foreach(var user in Model.Users)
+    {
+        <thead>
+            <tr>
+                <td> @user  </td>
+                <td class="fitwidth"> <i class="far fa-trash-alt"> @Html.ActionLink("Delete","DeleteUser","Users", new {id = user.Id }) </i> </td>
+            </tr>
+        </thead>
+    }
+
+
+</table>

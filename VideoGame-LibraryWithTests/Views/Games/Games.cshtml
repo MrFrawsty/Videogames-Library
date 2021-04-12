@@ -1,0 +1,73 @@
+﻿@model VideoGames.ViewModels.GamesViewModel
+   
+<h1 class="text-lg-center thead-dark">Game Library</h1>
+
+<a asp-controller="GamesController" asp-action="LoadAddGameView" class="btn btn-primary" style="margin-bottom: 30px">
+
+        Add Game
+</a>
+
+
+<table class="content-table bg-secondary">
+
+    <thead class="bg-primary">
+        <tr class="text-white">
+            <th><i class="far fa-trash-alt"> </i> </th>
+            <th><i class="far fa-edit"></i></th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Completed</th>
+        </tr>
+    </thead>
+
+
+    @foreach (var game in Model.GameLibrary)
+    {
+
+        if (game.Completed)
+        {
+
+
+
+            <tbody>
+                <tr>
+                    <td>  @Html.ActionLink("Delete", "Delete", "Games", new { id = game.GameId }) </td>
+                    <td>  @Html.ActionLink("Edit", "Edit", "Games", new { id = game.GameId })  </td>
+                    <td>  @Html.ActionLink(game.Name, "SearchWebForGame", "Games", new { gameName = game.Name }) </td>
+                    <td> @game.Genre</td>
+                    <td>Yes</td>
+
+                </tr>
+
+            </tbody>
+        }
+
+        else
+        {
+            <tbody>
+                <tr>
+                    <td>  @Html.ActionLink("Delete", "Delete", "Games", new { id = game.GameId }) </td>
+                    <td>  @Html.ActionLink("Edit", "Edit", "Games", new { id = game.GameId })  </td>
+                    <td>  @Html.ActionLink(game.Name, "SearchWebForGame", "Games", new { gameName = game.Name }) </td>
+                    <td> @game.Genre</td>
+                    <td>No</td>
+
+                </tr>
+
+            </tbody>
+        }
+
+
+
+    }
+</table>
+
+
+
+
+
+
+
+    
+
+

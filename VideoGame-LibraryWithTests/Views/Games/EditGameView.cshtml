@@ -1,0 +1,35 @@
+﻿@model VideoGames.ViewModels.GamesViewModel
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var game = Model.Game;
+}
+
+<h2>Add Game</h2>
+@using (Html.BeginForm("Save", "Games"))
+{
+    <div class="form-group">
+        @Html.LabelFor(g => g.Game.Name)
+        @Html.TextBoxFor(g => g.Game.Name, new { @class = "form-control" })
+    </div>
+
+    @*<div class="form-group">
+        @Html.LabelFor(g => g.Game.Genre)
+        @Html.TextBoxFor(g => g.Game.Genre, new { @class = "form-control" })
+    </div>*@
+
+    <div class="custom-checkbox">
+        <label>
+            @Html.CheckBoxFor(g => g.Game.Completed) Completed?
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Save Game
+        
+    </button>
+
+
+
+}
