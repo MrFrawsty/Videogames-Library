@@ -28,6 +28,7 @@ namespace VideogamesLibraryUnitTests.Tests
             //Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsAssignableFrom<GamesViewModel>(viewResult.ViewData.Model);
+            Assert.Equal(2, viewModel.GameLibrary.Count);
 
 
         }
