@@ -7718,11 +7718,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Zach.FRAWSTY-PC\\Source\\Repos\\VideoGame-LibraryWithTests\\VideoGames.csproj",
+      "projectUniqueName": "C:\\Users\\Zach.FRAWSTY-PC\\Source\\Repos\\Video-games-library\\VideoGame-LibraryWithTests\\VideoGames.csproj",
       "projectName": "VideoGames",
-      "projectPath": "C:\\Users\\Zach.FRAWSTY-PC\\Source\\Repos\\VideoGame-LibraryWithTests\\VideoGames.csproj",
+      "projectPath": "C:\\Users\\Zach.FRAWSTY-PC\\Source\\Repos\\Video-games-library\\VideoGame-LibraryWithTests\\VideoGames.csproj",
       "packagesPath": "C:\\Users\\Zach.FRAWSTY-PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Zach.FRAWSTY-PC\\Source\\Repos\\VideoGame-LibraryWithTests\\obj\\",
+      "outputPath": "C:\\Users\\Zach.FRAWSTY-PC\\Source\\Repos\\Video-games-library\\VideoGame-LibraryWithTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

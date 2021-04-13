@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j86pPGCQty6VDrmN82uECUByNvbwOuOvz+10NxDn8YLojFXTiPZ0hJzmz9hiiGDrjF9k859I1mbhfMLGUk9I2Q==",
+  "dgSpecHash": "yr79nHR43GbehTgS8HF0FYoLNkIFjj4aR0mfDEapXOVidK1qzV7E2EGEyqhRYk7Up7f53nEIpoPojoL5nC4tmA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Zach.FRAWSTY-PC\\Source\\Repos\\VideoGame-LibraryWithTests\\VideoGames.csproj",
+  "projectFilePath": "C:\\Users\\Zach.FRAWSTY-PC\\Source\\Repos\\Video-games-library\\VideoGame-LibraryWithTests\\VideoGames.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zach.FRAWSTY-PC\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Zach.FRAWSTY-PC\\.nuget\\packages\\mailkit\\2.11.1\\mailkit.2.11.1.nupkg.sha512",
