@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using VideoGames.Areas.Services;
 using VideoGames.Controllers;
 using VideoGames.Models;
+using VideoGames.ViewModels;
 using Xunit;
 
 namespace VideogamesLibraryUnitTests.Tests
@@ -25,7 +26,10 @@ namespace VideogamesLibraryUnitTests.Tests
 
 
             //Assert
-            Assert.IsType<ViewResult>(result);
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<GamesViewModel>(viewResult.ViewData.Model);
+
+
         }
 
         private List<Game> GetTestGames()
@@ -35,8 +39,8 @@ namespace VideogamesLibraryUnitTests.Tests
             {new Game() { GameId = 2, Name = "Test Game 2", Genre = "Test Genre", Completed = false } } };
 
             return games;
-                
-                
+
+
         }
     }
 }
