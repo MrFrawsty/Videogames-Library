@@ -13,6 +13,7 @@ namespace VideogamesLibraryUnitTests.Tests
 {
     public class GamesControllerTests
     {
+  
         [Fact]
         public async Task Games_ShouldReturnViewWithGames()
         {
@@ -32,6 +33,38 @@ namespace VideogamesLibraryUnitTests.Tests
             Assert.Equal(2, viewModel.GameLibrary.Count);
 
 
+        }
+
+        [Fact]
+        public void SaveGames_ShouldRedirectIfTrue()
+        {
+            var game = new Game() { GameId = 1, Name = "Test Game", Completed = true, Genre = "Test Genre" };
+            //Arrange
+            var mockData = new Mock<IUserData>();
+            mockData.Setup(m => m.SaveGames(game)).Returns(true);
+            var gamesController = new GamesController(mockData.Object);
+
+            //Act
+            var result = gamesController.Save(game);
+
+            //Assert
+            var actionResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Games", actionResult.ActionName);
+
+        }
+
+        [Fact]
+        public void SaveGames_ShouldReturnNotFoundIfFalse()
+        {
+            //Arrange
+            var mockData = new Mock<IUserData>();
+            var gamesController = new GamesController(mockData.Object);
+
+            //Act
+            var result = gamesController.Save(new Game());
+
+            //Assert
+            Assert.IsType<NotFoundResult>(result);
         }
 
         private List<Game> GetTestGames()
