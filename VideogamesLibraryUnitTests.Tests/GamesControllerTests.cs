@@ -7,21 +7,22 @@ using VideoGames.Controllers;
 using VideoGames.Models;
 using VideoGames.ViewModels;
 using Xunit;
+using System.Threading.Tasks;
 
 namespace VideogamesLibraryUnitTests.Tests
 {
     public class GamesControllerTests
     {
         [Fact]
-        public void Games_ShouldReturnViewWithGames()
+        public async Task Games_ShouldReturnViewWithGames()
         {
             //Arrange
             var mockData = new Mock<IUserData>();
-            mockData.Setup(data => data.GetGames()).Returns(GetTestGames);
+            mockData.Setup(data => data.GetGamesAsync()).ReturnsAsync(GetTestGames);
             var gamesController = new GamesController(mockData.Object);
 
             //Act
-            var result = gamesController.Games();
+            var result = await gamesController.Games();
 
 
 

@@ -47,6 +47,8 @@ namespace VideoGames
 
             services.AddControllersWithViews();
             services.AddScoped<IUserData, UserData>();
+            services.AddScoped<UserManager<VideoGamesUser>>();
+           
         }
 
 

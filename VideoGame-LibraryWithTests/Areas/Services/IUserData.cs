@@ -11,6 +11,7 @@ namespace VideoGames.Areas.Services
     {
 
         public IEnumerable<Game> GetGames();
+        public Task<IEnumerable<Game>> GetGamesAsync();
         public bool SaveGames(Game game);
         public Game GetByID(int id);
         public bool DeleteGame(int id);

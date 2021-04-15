@@ -226,3 +226,4 @@ C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideogamesLibraryUnitT
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideogamesLibraryUnitTests.Tests\obj\Debug\net5.0\ref\VideogamesLibraryUnitTests.Tests.dll
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideogamesLibraryUnitTests.Tests\obj\Debug\net5.0\VideogamesLibraryUnitTests.Tests.pdb
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideogamesLibraryUnitTests.Tests\obj\Debug\net5.0\VideogamesLibraryUnitTests.Tests.genruntimeconfig.cache
+C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideogamesLibraryUnitTests.Tests\bin\Debug\net5.0\VideoGames.StaticWebAssets.xml

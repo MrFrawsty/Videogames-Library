@@ -16,13 +16,15 @@ namespace VideoGames.Areas.Services
     {
         private readonly UserManager<VideoGamesUser> _userManager;
         private readonly VideoGamesContext _videoGamesContext;
+        private readonly IHttpContextAccessor _contextAccessor;
 
-        public UserData(UserManager<VideoGamesUser> userManager, VideoGamesContext videoGamesContext)
+        public UserData(UserManager<VideoGamesUser> userManager, VideoGamesContext videoGamesContext, IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
             _videoGamesContext = videoGamesContext;
-        }
+            _contextAccessor = httpContextAccessor;
 
+        }
         public IEnumerable<Game> GetGames()
         {
             var http = new HttpContextAccessor();
@@ -31,6 +33,15 @@ namespace VideoGames.Areas.Services
             return userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary;
 
            
+        }
+
+        public async Task<IEnumerable<Game>> GetGamesAsync()
+        {
+           //var http = new HttpContextAccessor();
+            var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
+            var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
+            return await Task.FromResult(userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary);
+
         }
 
         public void AddGame(Game game)
@@ -95,5 +106,7 @@ namespace VideoGames.Areas.Services
                 return false;
             }
         }
+
+
     }
 }

@@ -2,6 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\VideoGame-LibraryWithTests",
+    "\\VideoGame-LibraryWithTests\\Areas",
+    "\\VideoGame-LibraryWithTests\\Areas\\Services",
     "\\VideoGame-LibraryWithTests\\Controllers",
     "\\VideogamesLibraryUnitTests.Tests"
   ],

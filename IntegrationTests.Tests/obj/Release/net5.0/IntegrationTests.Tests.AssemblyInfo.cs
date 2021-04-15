@@ -11,6 +11,9 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("VideoGames", "C:\\Users\\Zach.FRAWSTY-PC\\Source\\Repos\\Video-games-library\\VideoGame-LibraryWithTe" +
+    "sts", "VideoGames.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("IntegrationTests.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

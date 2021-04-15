@@ -26,11 +26,11 @@ namespace VideoGames.Controllers
         }
         
         [Authorize]
-        public ActionResult Games()
+        public async Task<IActionResult> Games()
         {
-            var currentUserLibrary = _userData.GetGames().ToList();
+            var currentUserLibrary =  await _userData.GetGamesAsync();
             var gamesViewModel = new GamesViewModel();
-            gamesViewModel.GameLibrary = currentUserLibrary;
+            gamesViewModel.GameLibrary = currentUserLibrary.ToList();
             return View(gamesViewModel);
         }
 

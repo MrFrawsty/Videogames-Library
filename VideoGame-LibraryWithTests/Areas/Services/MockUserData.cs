@@ -39,6 +39,11 @@ namespace VideoGames.Areas.Services
             return _mockGames;
         }
 
+        public Task<IEnumerable<Game>> GetGamesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public void SaveGames()
         {
             throw new NotImplementedException();
