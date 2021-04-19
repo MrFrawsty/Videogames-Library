@@ -34,16 +34,16 @@ namespace VideogamesLibraryUnitTests.Tests
         }
 
         [Fact]
-        public void SaveGames_ShouldRedirectIfTrue()
+        public async Task SaveGames_ShouldRedirectIfTrue()
         {
             var game = new Game() { GameId = 1, Name = "Test Game", Completed = true, Genre = "Test Genre" };
             //Arrange
             var mockData = new Mock<IUserData>();
-            mockData.Setup(m => m.SaveGames(game)).Returns(true);
+            mockData.Setup(m => m.SaveGamesAsync(game)).ReturnsAsync(true);
             var gamesController = new GamesController(mockData.Object);
 
             //Act
-            var result = gamesController.Save(game);
+            var result = await gamesController.Save(game);
 
             //Assert
             var actionResult = Assert.IsType<RedirectToActionResult>(result);
@@ -52,31 +52,31 @@ namespace VideogamesLibraryUnitTests.Tests
         }
 
         [Fact]
-        public void SaveGames_ShouldReturnNotFoundIfFalse()
+        public async Task SaveGames_ShouldReturnNotFoundIfFalse()
         {
             //Arrange
             var mockData = new Mock<IUserData>();
             var gamesController = new GamesController(mockData.Object);
 
             //Act
-            var result = gamesController.Save(new Game());
+            var result = await gamesController.Save(new Game());
 
             //Assert
             Assert.IsType<NotFoundResult>(result);
         }
 
         [Fact]
-        public void Edit_ShouldReturnViewWithGameMatchingId()
+        public async Task Edit_ShouldReturnViewWithGameMatchingId()
         {
             //Arrange
             var game = new Game()
             { GameId = 1, Name = "Test Game 1", Genre = "Test Genre", Completed = false };
             var mockData = new Mock<IUserData>();
-            mockData.Setup(m => m.GetByID(1)).Returns(game);
+            mockData.Setup(m => m.GetByIDAsync(1)).ReturnsAsync(game);
             var gamesController = new GamesController(mockData.Object);
 
             //Act
-            var result = gamesController.Edit(1);
+            var result = await gamesController.Edit(1);
 
             //Assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -88,7 +88,7 @@ namespace VideogamesLibraryUnitTests.Tests
         }
 
         [Fact]
-        public void Edit_ShouldReturnNotFoundWithNullId()
+        public async Task Edit_ShouldReturnNotFoundWithNullId()
         {
             //Arrange
             var mockData = new Mock<IUserData>();
@@ -96,7 +96,7 @@ namespace VideogamesLibraryUnitTests.Tests
             var gamesController = new GamesController(mockData.Object);
 
             //Act
-            var result = gamesController.Edit(1);
+            var result = await gamesController.Edit(1);
 
             //Assert
             Assert.IsType<NotFoundResult>(result);
@@ -106,15 +106,15 @@ namespace VideogamesLibraryUnitTests.Tests
         }
 
         [Fact]
-        public void Delete_ShouldRedirectIfTrue()
+        public async Task Delete_ShouldRedirectIfTrue()
         {
             //Arrange
             var mockData = new Mock<IUserData>();
-            mockData.Setup(m => m.DeleteGame(1)).Returns(true);
+            mockData.Setup(m => m.DeleteGameAsync(1)).ReturnsAsync(true);
             var gamesController = new GamesController(mockData.Object);
 
             //Act
-            var result = gamesController.Delete(1);
+            var result = await gamesController.Delete(1);
 
             //Assert
            var action = Assert.IsType<RedirectToActionResult>(result).ActionName;
@@ -122,15 +122,15 @@ namespace VideogamesLibraryUnitTests.Tests
         }
 
         [Fact]
-        public void Delete_ShouldReturnNotFoundIfFalse()
+        public async Task Delete_ShouldReturnNotFoundIfFalse()
         {
             //Arrange
             var mockData = new Mock<IUserData>();
-            mockData.Setup(m => m.DeleteGame(1)).Returns(false);
+            mockData.Setup(m => m.DeleteGameAsync(1)).ReturnsAsync(false);
             var gamesController = new GamesController(mockData.Object);
 
             //Act
-            var result = gamesController.Delete(1);
+            var result = await gamesController.Delete(1);
 
             //Assert
             Assert.IsType<NotFoundResult>(result);

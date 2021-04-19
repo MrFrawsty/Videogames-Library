@@ -26,15 +26,6 @@ namespace VideoGames.Areas.Services
 
         } 
 
-        public IEnumerable<Game> GetGames()
-        {
-            var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
-            var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
-            return userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary;
-
-           
-        }
-
         public async Task<IEnumerable<Game>> GetGamesAsync()
         {
             var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
@@ -43,23 +34,23 @@ namespace VideoGames.Areas.Services
 
         }
 
-        public void AddGame(Game game)
+        public async Task AddGameAsync(Game game)
         {
             var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
             var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
-            var currentLibrary = userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary;
+            var currentLibrary = await Task.FromResult(userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary);
             currentLibrary.Add(game);
             _videoGamesContext.SaveChanges();
         }
 
-        public Game GetByID(int id)
+        public async Task<Game> GetByIDAsync(int id)
         {
-          return _videoGamesContext.Games.SingleOrDefault(g => g.GameId == id);
+          return await Task.FromResult(_videoGamesContext.Games.SingleOrDefault(g => g.GameId == id));
         }
 
-        public bool DeleteGame(int id)
+        public async Task<bool> DeleteGameAsync(int id)
         {
-            var game = _videoGamesContext.Games.SingleOrDefault(game => game.GameId == id);
+            var game = await Task.FromResult(_videoGamesContext.Games.SingleOrDefault(game => game.GameId == id));
             if (game != null)
             {
                 _videoGamesContext.Remove(game);
@@ -72,7 +63,7 @@ namespace VideoGames.Areas.Services
             }
         }
 
-        public bool SaveGames(Game game)
+        public async Task<bool> SaveGamesAsync(Game game)
         { 
             var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
             var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
@@ -83,7 +74,7 @@ namespace VideoGames.Areas.Services
             {
                 if (game.GameId == 0)
                 {
-                    AddGame(game);
+                    await AddGameAsync(game);
                 }
                 else
                 {

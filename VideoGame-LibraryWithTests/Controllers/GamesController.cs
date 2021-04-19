@@ -38,9 +38,9 @@ namespace VideoGames.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(Game game)
+        public async Task<IActionResult> Save(Game game)
         {
-            if (_userData.SaveGames(game) == true)
+            if ( await _userData.SaveGamesAsync(game) == true)
             
                 return RedirectToAction("Games");
  
@@ -57,9 +57,9 @@ namespace VideoGames.Controllers
 
         //TODO VALIDATEANTIFORGERYTOKEN
         [Route("GamesController/Edit")]
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var game = _userData.GetByID(id);
+            var game = await _userData.GetByIDAsync(id);
 
             if (game == null)
 
@@ -71,10 +71,10 @@ namespace VideoGames.Controllers
         }
 
         //TODO VALIDATEANTIFORGERYTOKEN
-        public ActionResult Delete(int id)
+        public async Task <IActionResult> Delete(int id)
         {
            
-            if (_userData.DeleteGame(id))
+            if (await _userData.DeleteGameAsync(id))
             {
                 return RedirectToAction("Games");
             }

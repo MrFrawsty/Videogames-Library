@@ -10,13 +10,11 @@ namespace VideoGames.Areas.Services
 {
    public interface IUserData
     {
-
-        public IEnumerable<Game> GetGames();
         public Task<IEnumerable<Game>> GetGamesAsync();
-        public bool SaveGames(Game game);
-        public Game GetByID(int id);
-        public bool DeleteGame(int id);
-        public void AddGame(Game game);
+        public Task<bool> SaveGamesAsync(Game game);
+        public Task<Game> GetByIDAsync(int id);
+        public Task <bool> DeleteGameAsync(int id);
+        public Task AddGameAsync(Game game);
         public List<VideoGamesUser> GetUsers();
     }
 }
