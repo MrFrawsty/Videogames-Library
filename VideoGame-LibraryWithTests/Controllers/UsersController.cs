@@ -13,19 +13,20 @@ using VideoGames.ViewModels;
 
 namespace VideoGames.Controllers
 {
+    //THIS CLASS IS FOR DEVELOPMENT ONLY
+    //PRODUCTION CODE WOULD HAVE SAFER WAY OF MANAGING DATABASE
+
     public class UsersController : Controller
     {
+        private readonly UserManager<VideoGamesUser> _userManager;
+        private readonly VideoGamesContext _videoGamesContext;
         public List<Game> CurrentUsersLibrary { get; set; }
-        UserManager<VideoGamesUser> _userManager;
-        VideoGamesContext _videoGamesContext;
        
 
         public UsersController(VideoGamesContext videoGamesContext, UserManager<VideoGamesUser> userManager)
         {
             _videoGamesContext = videoGamesContext;
             _userManager = userManager;
- 
-            
         }
 
         public ActionResult Users()

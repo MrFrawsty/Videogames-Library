@@ -24,11 +24,11 @@ namespace VideoGames.Areas.Services
             _videoGamesContext = videoGamesContext;
             _contextAccessor = httpContextAccessor;
 
-        }
+        } 
+
         public IEnumerable<Game> GetGames()
         {
-            var http = new HttpContextAccessor();
-            var userId = _userManager.GetUserId(http.HttpContext.User);
+            var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
             var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
             return userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary;
 
@@ -37,7 +37,6 @@ namespace VideoGames.Areas.Services
 
         public async Task<IEnumerable<Game>> GetGamesAsync()
         {
-           //var http = new HttpContextAccessor();
             var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
             var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
             return await Task.FromResult(userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary);
@@ -46,8 +45,7 @@ namespace VideoGames.Areas.Services
 
         public void AddGame(Game game)
         {
-            var http = new HttpContextAccessor();
-            var userId = _userManager.GetUserId(http.HttpContext.User);
+            var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
             var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
             var currentLibrary = userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary;
             currentLibrary.Add(game);
@@ -75,9 +73,8 @@ namespace VideoGames.Areas.Services
         }
 
         public bool SaveGames(Game game)
-        {
-            var http = new HttpContextAccessor();
-            var userId = _userManager.GetUserId(http.HttpContext.User);
+        { 
+            var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
             var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
             var currentLibrary = userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary;
 
@@ -107,6 +104,10 @@ namespace VideoGames.Areas.Services
             }
         }
 
+        public List<VideoGamesUser> GetUsers()
+        {
+            return _videoGamesContext.Users.ToList();
+        }
 
     }
 }
