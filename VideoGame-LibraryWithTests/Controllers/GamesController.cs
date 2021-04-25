@@ -83,6 +83,8 @@ namespace VideoGames.Controllers
 
         }
 
+      
+
         public ActionResult SearchWebForGame(string gameName)
         {
             string search = @"http://www.google.com/search?q=" + gameName;

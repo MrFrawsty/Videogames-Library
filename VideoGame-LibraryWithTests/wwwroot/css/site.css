@@ -24,6 +24,7 @@ a {
   border-color: #1861ac;
 }
 
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -78,13 +79,29 @@ td.fitwidth {
 .content-table
 {
     border-collapse: collapse;
-    margin: 25px 0;
     font-size: 0.9em;
-    min-width: 400px;
+    min-width: 1000px;
 }
 
 .content-table thead
 {
     text-align:left;
 }
+
+.my-text
+{
+    font-size: 5.087rem;
+
+}
+
+.list-container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.list-container ul{
+    text-align: left;
+}
+
 

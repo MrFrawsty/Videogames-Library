@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using VideoGames.Areas.Identity.Data;
+using VideoGames.Areas.Services;
 using VideoGames.Data;
 using VideoGames.Models;
 using VideoGames.ViewModels;
@@ -18,13 +19,15 @@ namespace VideoGames.Controllers
 
     public class UsersController : Controller
     {
+        private readonly UserData _userData;
         private readonly UserManager<VideoGamesUser> _userManager;
         private readonly VideoGamesContext _videoGamesContext;
         public List<Game> CurrentUsersLibrary { get; set; }
        
 
-        public UsersController(VideoGamesContext videoGamesContext, UserManager<VideoGamesUser> userManager)
+        public UsersController(VideoGamesContext videoGamesContext, UserManager<VideoGamesUser> userManager, UserData userData)
         {
+            _userData = userData;
             _videoGamesContext = videoGamesContext;
             _userManager = userManager;
         }
@@ -38,12 +41,24 @@ namespace VideoGames.Controllers
 
         public ActionResult DeleteUser(string id)
         {
+
             var user = _videoGamesContext.Users.SingleOrDefault(user => user.Id == id.ToString());
             _videoGamesContext.Users.Remove(user);
             _videoGamesContext.SaveChanges();
 
             return RedirectToAction("Users");
 
+        }
+
+        public async Task<IActionResult> DeleteUserAsync()
+        { 
+            var context = new HttpContextAccessor();
+
+            var userId = _userManager.GetUserId(context.HttpContext.User);
+       //     Task task = Task.FromResult(_userData.DeleteAllGamesAsync());
+            //await task.ContinueWith(ancedent => DeleteUser(userId));
+
+            return RedirectToAction("Index", "Home");
         }
 
         public async Task GetCurrentUserGameLibrary()

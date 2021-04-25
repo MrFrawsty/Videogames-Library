@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -10,6 +11,7 @@ namespace VideoGames.Areas.Identity.Data
     // Add profile data for application users by adding properties to the VideoGamesUser class
     public class VideoGamesUser : IdentityUser
     {
+        [InverseProperty(nameof(Game.VideoGamesUser))]
         public List<Game> UserGameLibrary { get; set; }
 
         //TODO change to Icollection at later time

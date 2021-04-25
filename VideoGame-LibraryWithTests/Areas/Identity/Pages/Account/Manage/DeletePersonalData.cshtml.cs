@@ -1,11 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
 using VideoGames.Areas.Identity.Data;
+using VideoGames.Areas.Services;
 
 namespace VideoGames.Areas.Identity.Pages.Account.Manage
 {
@@ -14,15 +18,18 @@ namespace VideoGames.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<VideoGamesUser> _userManager;
         private readonly SignInManager<VideoGamesUser> _signInManager;
         private readonly ILogger<DeletePersonalDataModel> _logger;
+        private readonly IUserData _userData;
 
         public DeletePersonalDataModel(
             UserManager<VideoGamesUser> userManager,
             SignInManager<VideoGamesUser> signInManager,
-            ILogger<DeletePersonalDataModel> logger)
+            ILogger<DeletePersonalDataModel> logger,
+            IUserData userData)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _userData = userData;
         }
 
         [BindProperty]
@@ -68,8 +75,29 @@ namespace VideoGames.Areas.Identity.Pages.Account.Manage
                 }
             }
 
-            var result = await _userManager.DeleteAsync(user);
-            var userId = await _userManager.GetUserIdAsync(user);
+            var context = _userData.GetDbContext();
+            
+            var videoGames =  await context.Games.Where(i=> i.VideoGamesUserId == user.Id ) 
+                .ToListAsync();
+
+                if(videoGames!=null)  
+                {
+                    foreach(var game in videoGames)
+                    {
+                    game.VideoGamesUserId=null;
+                    context.Entry(game).State = EntityState.Modified;
+                    }
+                    await context.SaveChangesAsync();
+                }
+
+                    var userId = await _userManager.GetUserIdAsync(user);
+
+                    var result = await _userManager.DeleteAsync(user);
+
+
+          
+            //var result = await _userManager.DeleteAsync(user);
+            //var userId = await _userManager.GetUserIdAsync(user);
             if (!result.Succeeded)
             {
                 throw new InvalidOperationException($"Unexpected error occurred deleting user with ID '{userId}'.");
@@ -81,5 +109,7 @@ namespace VideoGames.Areas.Identity.Pages.Account.Manage
 
             return Redirect("~/");
         }
+
+      
     }
 }

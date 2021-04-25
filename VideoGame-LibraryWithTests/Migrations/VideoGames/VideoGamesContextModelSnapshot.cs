@@ -236,9 +236,6 @@ namespace VideoGames.Migrations.VideoGames
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("VideoGamesUserId")
                         .HasColumnType("nvarchar(450)");
 
@@ -302,9 +299,12 @@ namespace VideoGames.Migrations.VideoGames
 
             modelBuilder.Entity("VideoGames.Models.Game", b =>
                 {
-                    b.HasOne("VideoGames.Areas.Identity.Data.VideoGamesUser", null)
+                    b.HasOne("VideoGames.Areas.Identity.Data.VideoGamesUser", "VideoGamesUser")
                         .WithMany("UserGameLibrary")
-                        .HasForeignKey("VideoGamesUserId");
+                        .HasForeignKey("VideoGamesUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("VideoGamesUser");
                 });
 
             modelBuilder.Entity("VideoGames.Areas.Identity.Data.VideoGamesUser", b =>

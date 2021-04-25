@@ -26,6 +26,7 @@ namespace VideoGames.Areas.Services
 
         } 
 
+        //TODO CHANGE THIS FROM ACCESSING ALL USER LIBRARIES
         public async Task<IEnumerable<Game>> GetGamesAsync()
         {
             var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
@@ -95,10 +96,41 @@ namespace VideoGames.Areas.Services
             }
         }
 
+        public async Task DeleteAllGamesAsync()
+        {
+            var games = await GetGamesAsync();
+            var list = games.ToList();
+            
+            for(int i = 0; i < list.Count; i++)
+            {
+                var game = list[i];
+              
+            }
+            _videoGamesContext.SaveChanges();
+        }
+        public bool DeleteUser(VideoGamesUser user)
+        {
+
+            if (user == null)
+            {
+                return false;
+            }
+            
+                _videoGamesContext.Users.Remove(user);
+                _videoGamesContext.SaveChanges();
+
+            return true;
+        }
         public List<VideoGamesUser> GetUsers()
         {
             return _videoGamesContext.Users.ToList();
         }
+
+        public VideoGamesContext GetDbContext()
+        {
+            return _videoGamesContext;
+        }
+
 
     }
 }

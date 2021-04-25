@@ -3,8 +3,12 @@
     "",
     "\\VideoGame-LibraryWithTests",
     "\\VideoGame-LibraryWithTests\\Areas",
+    "\\VideoGame-LibraryWithTests\\Areas\\Identity",
+    "\\VideoGame-LibraryWithTests\\Areas\\Identity\\Data",
+    "\\VideoGame-LibraryWithTests\\Areas\\Identity\\Pages\\Account",
     "\\VideoGame-LibraryWithTests\\Areas\\Services",
     "\\VideoGame-LibraryWithTests\\Controllers",
+    "\\VideoGame-LibraryWithTests\\Models",
     "\\VideogamesLibraryUnitTests.Tests"
   ],
   "SelectedNode": "\\VideoGame-LibraryWithTests\\VideoGames.sln",
