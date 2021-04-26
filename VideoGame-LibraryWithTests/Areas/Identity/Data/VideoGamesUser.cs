@@ -9,7 +9,7 @@ using VideoGames.Models;
 namespace VideoGames.Areas.Identity.Data
 {
     // Add profile data for application users by adding properties to the VideoGamesUser class
-    public class VideoGamesUser : IdentityUser
+    public class VideoGamesUser : IdentityUser<int>
     {
         [InverseProperty(nameof(Game.VideoGamesUser))]
         public List<Game> UserGameLibrary { get; set; }

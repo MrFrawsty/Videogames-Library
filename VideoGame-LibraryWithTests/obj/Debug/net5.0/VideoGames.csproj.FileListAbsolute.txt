@@ -411,4 +411,3 @@ C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithT
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\ref\VideoGames.dll
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\VideoGames.pdb
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\VideoGames.genruntimeconfig.cache
-C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\VideoGames.csprojAssemblyReference.cache

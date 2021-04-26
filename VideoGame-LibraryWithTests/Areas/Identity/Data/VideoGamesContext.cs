@@ -10,7 +10,7 @@ using VideoGames.Models;
 
 namespace VideoGames.Data
 {
-    public class VideoGamesContext : IdentityDbContext<VideoGamesUser>
+    public class VideoGamesContext : IdentityDbContext<VideoGamesUser, IdentityRole<int>, int>    
     {
         public DbSet<Game> Games { get; set; }
         public DbSet<VideoGamesUser> VideoGamesUsers { get; set; }

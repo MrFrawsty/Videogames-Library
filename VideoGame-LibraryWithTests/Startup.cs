@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,10 +30,14 @@ namespace VideoGames
         {
             services.AddDbContext<VideoGamesContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("VideoGamesContextConnection")));
-            services.AddDefaultIdentity<VideoGamesUser>(options =>
+            services.AddIdentity<VideoGamesUser, IdentityRole<int>>(options =>
             options.SignIn.RequireConfirmedAccount = true)
-            .AddEntityFrameworkStores<VideoGamesContext>();
-            
+            .AddEntityFrameworkStores<VideoGamesContext>()
+            .AddDefaultTokenProviders()
+            .AddDefaultUI();
+
+            services.AddRazorPages();
+
             services.AddAuthentication()
            .AddGoogle(options =>
            {

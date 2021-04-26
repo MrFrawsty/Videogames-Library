@@ -39,10 +39,10 @@ namespace VideoGames.Controllers
             return View(usersViewModel);
         }
 
-        public ActionResult DeleteUser(string id)
+        public ActionResult DeleteUser(int id)
         {
 
-            var user = _videoGamesContext.Users.SingleOrDefault(user => user.Id == id.ToString());
+            var user = _videoGamesContext.Users.SingleOrDefault(user => user.Id == id);
             _videoGamesContext.Users.Remove(user);
             _videoGamesContext.SaveChanges();
 
@@ -50,16 +50,16 @@ namespace VideoGames.Controllers
 
         }
 
-        public async Task<IActionResult> DeleteUserAsync()
-        { 
-            var context = new HttpContextAccessor();
+       // public async Task<IActionResult> DeleteUserAsync()
+       // { 
+       //     var context = new HttpContextAccessor();
 
-            var userId = _userManager.GetUserId(context.HttpContext.User);
-       //     Task task = Task.FromResult(_userData.DeleteAllGamesAsync());
-            //await task.ContinueWith(ancedent => DeleteUser(userId));
+       //     var userId = _userManager.GetUserId(context.HttpContext.User);
+       ////     Task task = Task.FromResult(_userData.DeleteAllGamesAsync());
+       //     //await task.ContinueWith(ancedent => DeleteUser(userId));
 
-            return RedirectToAction("Index", "Home");
-        }
+       //     return RedirectToAction("Index", "Home");
+       // }
 
         public async Task GetCurrentUserGameLibrary()
         {
@@ -69,16 +69,16 @@ namespace VideoGames.Controllers
             
         }
 
-        public VideoGamesUser GetCurrentUser()
-        {
-           // var claimsIdentity = (ClaimsIdentity)this.User.Identity;
-           // var claim = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
-            var id = HttpContext.User.Identity.Name;
-            
-            return _videoGamesContext.Users.FirstOrDefault(u => u.Id == id);
-        }
+        //public VideoGamesUser GetCurrentUser()
+        //{
+        //    // var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+        //    // var claim = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+        //  //  var id = HttpContext.User.Identity.
 
-     
+        //    //return _videoGamesContext.Users.FirstOrDefault(u => u.Id == id);
+        //}
+
+
 
         public List<VideoGamesUser> GetUsers()
         {

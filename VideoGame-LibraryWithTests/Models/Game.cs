@@ -18,11 +18,12 @@ namespace VideoGames.Models
             public string Genre { get; set; }
             public bool Completed { get; set; }
             
-            public string VideoGamesUserId { get; set;}
+            public int? VideoGamesUserId { get; set;}
 
             [ForeignKey(nameof(VideoGamesUserId))]
             [InverseProperty("UserGameLibrary")]
-            public VideoGamesUser VideoGamesUser{ get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public VideoGamesUser VideoGamesUser{ get; set; }
         
 
             public Game(string name, string genre, bool completed, int id)

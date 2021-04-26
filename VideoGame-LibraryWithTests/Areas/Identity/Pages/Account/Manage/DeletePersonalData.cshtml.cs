@@ -76,8 +76,9 @@ namespace VideoGames.Areas.Identity.Pages.Account.Manage
             }
 
             var context = _userData.GetDbContext();
-            
-            var videoGames =  await context.Games.Where(i=> i.VideoGamesUserId == user.Id ) 
+
+
+            var videoGames = await context.Games.Where(i => i.VideoGamesUserId == user.Id) 
                 .ToListAsync();
 
                 if(videoGames!=null)  

@@ -29,7 +29,7 @@ namespace VideoGames.Areas.Services
         //TODO CHANGE THIS FROM ACCESSING ALL USER LIBRARIES
         public async Task<IEnumerable<Game>> GetGamesAsync()
         {
-            var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
+            int userId = _userManager.GetUserAsync(_contextAccessor.HttpContext.User).Result.Id;
             var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
             return await Task.FromResult(userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary);
 
@@ -37,7 +37,8 @@ namespace VideoGames.Areas.Services
 
         public async Task AddGameAsync(Game game)
         {
-            var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
+            var userId = _userManager.GetUserAsync(_contextAccessor.HttpContext.User).Result.Id;
+            // var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
             var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
             var currentLibrary = await Task.FromResult(userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary);
             currentLibrary.Add(game);
@@ -66,7 +67,7 @@ namespace VideoGames.Areas.Services
 
         public async Task<bool> SaveGamesAsync(Game game)
         { 
-            var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
+            var userId = _userManager.GetUserAsync(_contextAccessor.HttpContext.User).Result.Id;
             var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
             var currentLibrary = userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary;
 
