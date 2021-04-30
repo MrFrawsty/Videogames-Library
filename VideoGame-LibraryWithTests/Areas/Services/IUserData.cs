@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using VideoGames.Areas.Identity.Data;
 using VideoGames.Data;
 using VideoGames.Models;
-using VideoGames.ViewModels;
 
 namespace VideoGames.Areas.Services
 {
-   public interface IUserData
+    public interface IUserData
     {
         public Task<IEnumerable<Game>> GetGamesAsync();
         public Task<bool> SaveGamesAsync(Game game);

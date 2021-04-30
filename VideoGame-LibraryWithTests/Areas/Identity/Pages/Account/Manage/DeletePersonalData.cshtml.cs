@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
 using VideoGames.Areas.Identity.Data;
 using VideoGames.Areas.Services;
@@ -96,9 +95,6 @@ namespace VideoGames.Areas.Identity.Pages.Account.Manage
                     var result = await _userManager.DeleteAsync(user);
 
 
-          
-            //var result = await _userManager.DeleteAsync(user);
-            //var userId = await _userManager.GetUserIdAsync(user);
             if (!result.Succeeded)
             {
                 throw new InvalidOperationException($"Unexpected error occurred deleting user with ID '{userId}'.");

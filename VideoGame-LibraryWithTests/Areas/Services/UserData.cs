@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VideoGames.Areas.Identity.Data;
 using VideoGames.Data;
 using VideoGames.Models;
-using VideoGames.ViewModels;
 
 namespace VideoGames.Areas.Services
 {
@@ -26,19 +24,17 @@ namespace VideoGames.Areas.Services
 
         } 
 
-        //TODO CHANGE THIS FROM ACCESSING ALL USER LIBRARIES
+   
         public async Task<IEnumerable<Game>> GetGamesAsync()
         {
             int userId = _userManager.GetUserAsync(_contextAccessor.HttpContext.User).Result.Id;
             var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
             return await Task.FromResult(userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary);
-
         }
 
         public async Task AddGameAsync(Game game)
         {
             var userId = _userManager.GetUserAsync(_contextAccessor.HttpContext.User).Result.Id;
-            // var userId = _userManager.GetUserId(_contextAccessor.HttpContext.User);
             var userLibraries = _userManager.Users.Include(u => u.UserGameLibrary);
             var currentLibrary = await Task.FromResult(userLibraries.Where(x => x.Id == userId).FirstOrDefault().UserGameLibrary);
             currentLibrary.Add(game);
@@ -63,6 +59,19 @@ namespace VideoGames.Areas.Services
             {
                 return false;
             }
+        }
+
+        public async Task DeleteAllGamesAsync()
+        {
+            var games = await GetGamesAsync();
+            var list = games.ToList();
+            
+            for(int i = 0; i < list.Count; i++)
+            {
+                var game = list[i];
+              
+            }
+            _videoGamesContext.SaveChanges();
         }
 
         public async Task<bool> SaveGamesAsync(Game game)
@@ -97,18 +106,6 @@ namespace VideoGames.Areas.Services
             }
         }
 
-        public async Task DeleteAllGamesAsync()
-        {
-            var games = await GetGamesAsync();
-            var list = games.ToList();
-            
-            for(int i = 0; i < list.Count; i++)
-            {
-                var game = list[i];
-              
-            }
-            _videoGamesContext.SaveChanges();
-        }
         public bool DeleteUser(VideoGamesUser user)
         {
 
@@ -122,6 +119,7 @@ namespace VideoGames.Areas.Services
 
             return true;
         }
+
         public List<VideoGamesUser> GetUsers()
         {
             return _videoGamesContext.Users.ToList();

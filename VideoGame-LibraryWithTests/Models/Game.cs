@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 using VideoGames.Areas.Identity.Data;
 
 namespace VideoGames.Models
 {
-        public class Game
+    public class Game
         {
-            [Key]
-            //TODO CHANGE ID TO STRING??
+            [Key]       
             public long GameId { get; set; }
             [Required]
             public string Name { get; set; }

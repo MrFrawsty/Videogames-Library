@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using VideoGames.Models;
 
@@ -14,7 +11,6 @@ namespace VideoGames.Areas.Identity.Data
         [InverseProperty(nameof(Game.VideoGamesUser))]
         public List<Game> UserGameLibrary { get; set; }
 
-        //TODO change to Icollection at later time
         public VideoGamesUser(List<Game> games)
         {
             UserGameLibrary = games;

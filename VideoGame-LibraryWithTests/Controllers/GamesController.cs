@@ -1,15 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
-using VideoGames.Areas.Identity.Data;
 using VideoGames.Areas.Services;
-using VideoGames.Data;
 using VideoGames.Models;
 using VideoGames.ViewModels;
 
@@ -34,8 +27,6 @@ namespace VideoGames.Controllers
             return View(gamesViewModel);
         }
 
-     
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Save(Game game)
@@ -47,7 +38,6 @@ namespace VideoGames.Controllers
             else
                 return NotFound();
         }
-
         
         [Route("GamesController/LoadAddGameView")]
         public ActionResult LoadAddGameView()
@@ -55,7 +45,7 @@ namespace VideoGames.Controllers
             return View("AddGameView");
         }
 
-        //TODO VALIDATEANTIFORGERYTOKEN
+        [AutoValidateAntiforgeryToken]
         [Route("GamesController/Edit")]
         public async Task<IActionResult> Edit(int id)
         {
@@ -70,7 +60,7 @@ namespace VideoGames.Controllers
             return View("AddGameView", viewModel);
         }
 
-        //TODO VALIDATEANTIFORGERYTOKEN
+        [AutoValidateAntiforgeryToken]
         public async Task <IActionResult> Delete(int id)
         {
            
@@ -82,8 +72,6 @@ namespace VideoGames.Controllers
                 return NotFound();
 
         }
-
-      
 
         public ActionResult SearchWebForGame(string gameName)
         {
