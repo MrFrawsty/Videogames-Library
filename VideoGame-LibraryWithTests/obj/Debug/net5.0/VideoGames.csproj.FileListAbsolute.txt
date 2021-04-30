@@ -392,7 +392,6 @@ C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithT
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\Razor\Views\Games\AddGameView.cshtml.g.cs
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\Razor\Views\Games\EditGameView.cshtml.g.cs
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\Razor\Views\Games\Games.cshtml.g.cs
-C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\Razor\Views\Games\Index.cshtml.g.cs
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
@@ -411,3 +410,4 @@ C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithT
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\ref\VideoGames.dll
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\VideoGames.pdb
 C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\VideoGames.genruntimeconfig.cache
+C:\Users\Zach.FRAWSTY-PC\Source\Repos\Video-games-library\VideoGame-LibraryWithTests\obj\Debug\net5.0\VideoGames.csprojAssemblyReference.cache
